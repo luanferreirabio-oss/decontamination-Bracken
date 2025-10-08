@@ -1,6 +1,8 @@
-# Pipeline de Descontaminação e Classificação Taxonômica com Kraken2 e Bracken
+# 🧬 Pipeline de Descontaminação e Classificação Taxonômica com Kraken2 e Bracken
 
-Este pipeline automatiza o processamento de dados metagenômicos, incluindo etapas de descontaminação, filtragem, classificação taxonômica e estimativa de abundância.
+Este pipeline automatiza o processamento de dados metagenômicos, incluindo etapas de descontaminação, filtragem, classificação taxonômica e estimativa de abundância. Ele pode ser executado via script Bash (`pipeline.sh`) ou utilizando Snakemake (`Snakefile`) para maior modularidade e controle.
+
+---
 
 ## 📋 Etapas do pipeline
 
@@ -18,29 +20,17 @@ Este pipeline automatiza o processamento de dados metagenômicos, incluindo etap
 3. **Estimativa de abundância com Bracken**:
    - Redistribuição de reads para refinamento taxonômico
 
-## 🛠️ Requisitos
+---
 
-- Máquina com as seguintes especificações:
-  - Processador: Intel i5-12400F
-  - GPU: NVIDIA GTX 1650 (4 GB)
-  - Memória RAM: 32 GB (3200 MHz)
-  - Armazenamento: 2 SSDs de 1 TB cada
-- [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
-- [Kraken2](https://ccb.jhu.edu/software/kraken2/)
-- [Bracken](https://ccb.jhu.edu/software/bracken/)
-- Bash (Linux ou WSL)
-- Espaço em disco: **>250 GB** recomendado para construção e uso do banco de dados
+## ⚙️ Configuração via YAML
 
-## 📦 Tamanho do banco de dados
+O arquivo `config.yaml` define os parâmetros do pipeline, como caminhos de entrada, nomes de bancos, níveis taxonômicos e opções de execução. Isso permite flexibilidade sem a necessidade de editar diretamente os scripts.
 
-O banco de dados Kraken2 personalizado, construído com sequências dos domínios *Bacteria* e *Fungi*, ocupa aproximadamente **250 GB** após a compilação. Esse volume reflete a abrangência taxonômica e a complexidade genômica dos grupos selecionados. Recomenda-se o uso de discos SSD e espaço em disco superior a 300 GB para garantir desempenho e evitar falhas durante o processamento.
+---
 
-## 🚀 Como executar
+## 🧪 Execução com Snakemake
 
-Clone o repositório e execute o script principal:
+Para rodar o pipeline com Snakemake:
 
 ```bash
-git clone https://github.com/luanferreirabio-oss/descontaminacao-Bracken.git
-cd descontaminacao-Bracken
-bash pipeline.sh
-
+snakemake --cores 8 --configfile config.yaml

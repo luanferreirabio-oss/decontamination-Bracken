@@ -33,4 +33,4 @@ O arquivo `config.yaml` define os parâmetros do pipeline, como caminhos de entr
 Para rodar o pipeline com Snakemake:
 
 ```bash
-snakemake --cores 8 --configfile config.yaml
+snakemake --cores 5 --configfile config.yaml

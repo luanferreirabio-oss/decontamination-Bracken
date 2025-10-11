@@ -11,8 +11,11 @@ INDEX_DIR="projeto_metagenoma/indices"
 
 mkdir -p "$FILTERED_DIR" "$LOG_DIR"
 
-SAMPLES=("P1" "P2" "P3" "P4" "P5")
-CONTAMINANTES=("human_index" "phix_index" "rrna_index" "cacao_index" "chloroplast_index")
+# Detecta automaticamente todas as amostras com arquivos _R1.fastq.gz
+SAMPLES=($(ls "$RAW_DIR" | grep "_R1.fastq.gz" | sed 's/_R1.fastq.gz//' | sort | uniq))
+
+# Índices Bowtie2 para descontaminação
+CONTAMINANTES=("human_index" "phix_index" "ribosomal_index" "cacao_index" "chloroplast_index")
 
 # ============================
 # ETAPA 1: FASTP (Filtragem de qualidade)
@@ -96,4 +99,3 @@ mkdir -p relatorios_fastp relatorios_multiqc
 find "$LOG_DIR" -type f -name "*fastp*.json" -exec cp -u {} relatorios_fastp/ \;
 
 multiqc relatorios_fastp/ -o relatorios_multiqc/
-

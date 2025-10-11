@@ -1,0 +1,65 @@
+# ============================================================
+# ÍNDICES BOWTIE2 PARA DESCONTAMINAÇÃO METAGENÔMICA
+# ============================================================
+
+# Cada índice foi construído a partir de um arquivo FASTA de referência.
+# Os arquivos podem ser baixados diretamente do NCBI ou outras bases confiáveis.
+
+# ------------------------------------------------------------
+# 1. Genoma humano (GRCh38)
+# ------------------------------------------------------------
+# Download:
+# https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/
+# Arquivo: GCA_000001405.28_GRCh38.p13_genomic.fna.gz
+
+# Construção do índice:
+bowtie2-build GRCh38_genomic.fna indices/human_index
+
+# ------------------------------------------------------------
+# 2. PhiX control (Illumina spike-in)
+# ------------------------------------------------------------
+# Download:
+# https://www.ncbi.nlm.nih.gov/nuccore/J02482.1
+# Clique em "Send to > File > FASTA" para baixar
+
+# Construção do índice:
+bowtie2-build phix.fa indices/phix_index
+
+# ------------------------------------------------------------
+# 3. rRNA universal (ex: Silva, NCBI)
+# ------------------------------------------------------------
+# Download exemplo:
+# https://ftp.ncbi.nlm.nih.gov/refseq/release/rRNA/
+# Arquivo: rRNA.fna.gz (contém sequências de rRNA de diversos organismos)
+
+# Construção do índice:
+bowtie2-build rrna.fna indices/rrna_index
+
+# ------------------------------------------------------------
+# 4. Genoma do cacau (Theobroma cacao)
+# ------------------------------------------------------------
+# Download:
+# https://www.ncbi.nlm.nih.gov/assembly/GCF_000208745.1/
+# Arquivo: GCF_000208745.1_Tcacao_genomic.fna.gz
+
+# Construção do índice:
+bowtie2-build Tcacao_genomic.fna indices/cacao_index
+
+# ------------------------------------------------------------
+# 5. Cloroplasto (referência vegetal)
+# ------------------------------------------------------------
+# Download exemplo:
+# https://www.ncbi.nlm.nih.gov/nuccore/NC_001879.2
+# Clique em "Send to > File > FASTA" para baixar
+
+# Construção do índice:
+bowtie2-build chloroplast.fa indices/chloroplast_index
+
+# ============================================================
+# Observações:
+# - Os arquivos devem estar em formato FASTA (.fa ou .fna)
+# - Após o download, descompacte com: gunzip arquivo.fna.gz
+# - Os índices gerados (.bt2) são salvos na pasta: projeto_metagenoma/indices/
+# - É necessário ter o Bowtie2 instalado e disponível no PATH
+# - Recomenda-se rodar cada comando separadamente para evitar sobrecarga de memória
+

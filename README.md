@@ -68,3 +68,19 @@ bash pipeline_manual.sh
 
 ```bash
 bash pipeline_manual.sh
+
+📦 Resultados finais
+
+    Arquivos limpos: *_step4_R1.fastq.gz e *_step4_R2.fastq.gz
+
+    Relatórios Fastp por amostra
+
+    Relatório MultiQC consolidado
+
+👨‍🔬 Autor
+
+Este pipeline foi desenvolvido por Luan Ferreira como parte de um projeto de análise metagenômica de solos de várzea sob cultivo de cacau. Contato: [luan.ferreirabio@gmail.com]
+📄 Licença
+
+Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e compartilhar.
+Código

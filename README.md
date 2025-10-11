@@ -52,7 +52,7 @@ As amostras foram obtidas de solos de várzea sob cultivo de cacau e estão disp
 
     BioProject: PRJNA1224407
     
-    Amostras: P1, P2, P3, P4, P5
+    Amostras: P1, P2, P3, P4, P5 e P6
 
 Tipo de dados: Shotgun - Sequenciamento metagenômico pareado (paired-end)
 
